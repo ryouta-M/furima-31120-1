@@ -11,7 +11,7 @@
 | last_name       | string        | null: false           |
 | first_name_kana | string        | null: false           |
 | last_name_kana  | string        | null: false           |
-| birth_date      | date          | null: false,          |
+| birth_date      | date          | null: false           |
 
 ### Association
  - has_many :products
@@ -22,12 +22,12 @@
 | Column          | Type           | Options              |
 | --------------- | -------------- | -------------------- |
 | title           | string         | null: false          |
-| price           | string         | null: false          |
+| price           | integer        | null: false          |
 | text            | text           | null: false          |
-| category_id     | references     | null: false, foreign_key: true |
-| condition_id    | references     | null: false, foreign_key: true |
-| prefecture_id   | references     | null: false, foreign_key: true |
-| postage_payer   | integer        | null: false,         |
+| category_id     | integer        | null: false          |
+| condition_id    | integer        | null: false          |
+| prefecture_id   | integer        | null: false          |
+| postage_payer   | integer        | null: false          |
 | preparation_day | integer        | null: false          |
 | user_id         | references     | null: false, foreign_key: true |
 
@@ -39,7 +39,6 @@
 
 | Column          | Type            | Options                |
 | --------------- | --------------- | ---------------------- |
-| address_id      | references      | null: false, foreign_key: true |
 | product_id      | references      | null: false, foreign_key: true |
 | user_id         | references      | null: false, foreign_key: true |
 
@@ -53,7 +52,7 @@
 | Column          | Type            | Options                |
 | --------------- | --------------- | ---------------------- |
 | post_code       | string          | null: false            |
-| prefecture_id   | integer         | null: false, foreign_key: true |
+| prefecture_id   | integer         | null: false            |
 | city            | string          | null: false            |
 | address         | string          | null: false            |
 | building        | string          |
