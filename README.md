@@ -32,7 +32,7 @@
 | user               | references     | null: false, foreign_key: true |
 
 ### Association
- - belongs_to :users
+ - belongs_to :user
  - has_one :purchase
 
 ## purchase テーブル
@@ -43,8 +43,8 @@
 | user           | references      | null: false, foreign_key: true |
 
 ### Association
- - belongs_to :users
- - belongs_to :products
+ - belongs_to :user
+ - belongs_to :product
  - has_one :address
 
 ## address テーブル
