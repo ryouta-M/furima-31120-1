@@ -10,39 +10,6 @@ RSpec.describe User, type: :model do
       it '全ての項目を正しく登録する' do
         expect(@user).to be_valid
       end
-
-      it 'emailに@が含まれていると登録ができる'do
-        @user.email = 'test@test.ne.jp'
-        expect(@user).to be_valid
-      end
-      it 'passwordが6文字以上で登録できる'do
-        @user.password = 'test000'
-        @user.password_confirmation = 'test000'
-        expect(@user).to be_valid
-      end
-      it 'emailが重複しなければ登録できる'do
-        @user.email = 'test@test.jp'
-        @user.save
-        user_test = FactoryBot.build(:user)
-        user_test.email = 'testt@test.jp'
-        expect(user_test).to be_valid
-      end
-      it 'passwordが半角英数混合であれば登録できる'do
-        password = '111111a'
-        @user.password = password
-        @user.password_confirmation = password
-        expect(@user).to be_valid
-      end
-      it 'first_nameとlast_nameが全角漢字であれば登録できる'do
-        @user.first_name = '漢字'
-        @user.last_name = '漢字'
-        expect(@user).to be_valid
-      end
-      it 'first_name_kanaとlast_name_kanaが全角カタカナであれば登録できる'do
-        @user.first_name_kana = 'カタカナ'
-        @user.last_name_kana = 'カタカナ'
-        expect(@user).to be_valid
-      end
     end
 
     describe 'ユーザー新規登録失敗'do
