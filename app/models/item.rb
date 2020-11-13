@@ -9,12 +9,15 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_payer
   belongs_to_active_hash :preparation_day
 
-  with_options presence: true, numericality: { other_than: 1 } do
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
+                      format: { with: /\A[0-9]+\z/ }
+  with_options presence: true do
     validates :title
     validates :text
     validates :image
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
-                      format: { with: /\A[0-9]+\z/ }
+  end
+
+  with_options presence: true, numericality: { other_than: 1 } do
     validates :prefecture_id
     validates :category_id
     validates :condition_id
