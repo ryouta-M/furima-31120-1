@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_item, only: [:show]
+  before_action :authenticate_user!, only: [:new, :create, :edit]
+  before_action :set_item, only: [:show, :edit]
   def index
     @items = Item.order(id: 'DESC')
   end
@@ -19,6 +19,11 @@ class ItemsController < ApplicationController
 
   def show
   end
+
+  def edit
+    redirect_to root_path and return unless set_item.order.nil?
+  end
+
 end
 
 private
