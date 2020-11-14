@@ -17,8 +17,8 @@ RSpec.describe Item, type: :model do
         @item.price = 398
         expect(@item).to be_valid
       end
-      it 'prefecture_idが0以外なら出品できる'do
-        @item.prefecture_id = 1
+      it 'prefecture_idが1以外なら出品できる'do
+        @item.prefecture_id = 2
         expect(@item).to be_valid
       end
       it 'preparation_day_idが1以外なら出品できる'do
@@ -49,9 +49,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceが10,000,000円以上だと出品できない'do
-        @item.price = 10,000,000
+        @item.price = 10000000
         @item.valid?
-        expect(@item.error.full_messages).to include('Price must be less than or equal to 9999999')
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it 'priceが半角数字以外だと出品できない'do
         @item.price = '９０００'
@@ -68,8 +68,8 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
-      it 'prefecture_idが0だと出品できない'do
-        @item.prefecture_id = 0
+      it 'prefecture_idが1だと出品できない'do
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
@@ -81,10 +81,10 @@ RSpec.describe Item, type: :model do
       it 'postage_payer_idが1だと保存できない'do
         @item.postage_payer_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('PostagePayer must be other than 1')
+        expect(@item.errors.full_messages).to include('Postage payer must be other than 1')
       end
       it 'preparation_day_idが1だと出品できない'do
-        @item.preparation_day = 1
+        @item.preparation_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Preparation day must be other than 1')
       end
