@@ -27,7 +27,7 @@ end
 
 def order_params
   params.require(:order_address).permit(:post_code, :prefecture_id, :city, :address, :building, :phone_number)
-  .merge(user_id: params[:user_id], item_id: params[:item_id], token: params[:card_token])
+  .merge(user_id: current_user.id, item_id: params[:item_id], token: params[:card_token])
 end
 
 def pay_item
